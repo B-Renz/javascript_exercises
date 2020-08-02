@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+<body>
+    <script>
+        let t = 1; //'t' defined in global scope
+
+        /*Error if 'output(u)' called from global scope
+        u isn't defined globally here*/
+        function a() {
+        let u = 2;
+        }
+        /*Error if 'output(v)' called from global scope
+        v isn't defined globally here*/
+        function b() {
+        let v = 3;
+        }
+        /*'Output(w)' will display when 'c()' is called
+        since 'w' is defined within the function scope
+        and function scope can be called from global scope*/
+        function c() {
+            let w = 2;
+            output(w);
+        }
+        /*'Output(x)' will display when 'd()' is called
+        since 'x' is defined within the function scope
+        and function scope can be called from global scope*/
+        function d() {
+            let x = 3;
+            output(x);
+        }
+        /*Error if 'e()' called from global scope
+        since an undefined variable 'z' is not defined within 
+        function e()*/
+        function e() {
+            let y = 4;
+            output(z);
+        }
+
+        function output(value) {
+        const para = document.createElement('p');
+        document.body.appendChild(para);
+        para.textContent = 'Value: ' + value;
+        }
+    </script>
+</body>
+</html>

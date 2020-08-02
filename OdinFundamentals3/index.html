@@ -1,0 +1,130 @@
+<!-- Practice assignment from Odin Project
+Javascript Fundamentals 3 that tie in scope
+and return-value functions
+This file insludes scrips for:
+1. ADDING: `$[input]` + fixed.value = final.value
+2. MULTIPLYING: `$[input1]` * `$[input2]` = final.value
+3. CAPITALIZING: 'angie' = Angie , 'ANGIE' = Angie , 'aNgIe' = Angie
+4. INDENTIFYING: 'angie' = e , 'ZA8e1U' = U , 'gh62t97' = 7
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Odin Javascript Fund 3</title>
+    </head>
+    <body>
+        <div id="add">
+            <h2>Adding</h2>
+            <p class="context">Input a number</p>
+            <input class="adding" type="text">
+            <p class="addp"></p>
+        </div>
+
+        <div id="mult">
+            <h2>Multiplying</h2>
+            <p class="context">Input a number</p>
+            <input class="number1" type="text">
+            <p class="context">Input another number</p>
+            <input class="number2" type="text">
+            <p class="multiplyp"></p>
+        </div>
+
+        <div id="cap">
+            <h2>Capitalizing</h2>
+            <p class="context">Type a word (case-insensitive)</p>
+            <input class="caps" type="text">
+            <p class="capp"></p>
+        </div>
+
+        <div id="last">
+            <h2>Identifying</h2>
+            <p class="context">Type a word</p>
+            <input class="lastletter" type="text">
+            <p class="lastp"></p>
+        </div>
+        <script>
+        //ADDING
+        /* adds 1 manually inputed numerical value
+        with numerical value '7' and outputs the calculation*/ 
+
+            //Defining selectors (this links script to HTML elements)
+            const inputadd = document.querySelector('.adding');
+            const paraadd = document.querySelector('.addp');
+
+            //Defining function
+            function add7(num) {
+                return num + 7;
+            }
+
+            //Output
+            inputadd.onchange = function() {
+                const num = inputadd.value;
+                if (isNaN(num)) {
+                    paraadd.textContent = 'You need to enter a numba sucka';
+                } else {
+                    paraadd.textContent = num + ' +' + ' 7 ' + '= ' + add7(num); //calling function
+                }
+            }
+            
+        //MULTIPLYING
+        /*multiplies 2 manually inputed numerical values
+        and outputs the calculation*/
+
+            const inputmult1 = document.querySelector('.number1');
+            const inputmult2 = document.querySelector('.number2');
+            const paramult = document.querySelector('.multiplyp');
+
+            function multiply(num1,num2) {
+                return num1 * num2;
+            }
+
+            inputmult2.onchange = function() {
+                const num1 = inputmult1.value;
+                const num2 = inputmult2.value;
+                if (isNaN(num1 || num2)) {
+                    paramult.textContent = 'Only numbas sucka';
+                } else {
+                    paramult.textContent = num1 + ' * ' + num2 + ' = ' + multiply(num1,num2); 
+                }
+            }
+            
+        //CAPITALIZING FIRST LETTER ONLY
+        /*Makes sure that every data entry recorded
+        (say within a text file or spreadhsheet) looks clean and consistent
+        Example:
+        'james' => 'James'
+        'LEONARD' => 'Leonard'
+        'AnGiE' => 'Angie'
+        */
+
+            const input = document.querySelector('.caps'); 
+            const x = document.querySelector('.capp'); 
+
+            input.onchange = function() {
+                const string = input.value; 
+                x.textContent = string[0].toUpperCase() +  string.slice(1).toLowerCase(); 
+            }
+
+        //IDENTIFYING LAST CHARACTER OF A STRING
+        /*useful when only a portion of the input is necessary 
+        for data collection & analysis
+        Example:
+        'jumble' = e
+        '15Aei9u' = u
+        'gh678' = 8
+        */
+
+            const lastletter = document.querySelector('.lastletter');
+            const letter = document.querySelector('.lastp');
+
+            lastletter.onchange = function() {
+                const lastchar = lastletter.value;
+                letter.textContent = lastchar.charAt(lastchar.length -1);
+            }
+
+        </script>
+    </body>
+</html>
